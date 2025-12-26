@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Star, Quote } from "lucide-react";
 import Layout from "@/components/Layout";
-import SectionHeading from "@/components/SectionHeading";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const testimonials = [
   {
@@ -80,6 +80,8 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const { t } = useLanguage();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -101,13 +103,13 @@ const Testimonials = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              Testimonials
+              {t('testimonialsPage.heroTitle')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6">
-              What Our Clients Say
+              {t('testimonialsPage.heroTitleHighlight')}
             </h1>
             <p className="text-lg text-muted-foreground">
-              Don't just take our word for it — hear from our happy clients about their experience with Bittu Caterers.
+              {t('testimonialsPage.heroSubtitle')}
             </p>
             <div className="decorative-line-center mt-8" />
           </motion.div>
@@ -119,10 +121,10 @@ const Testimonials = () => {
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "1000+", label: "Happy Clients" },
-              { number: "500+", label: "Weddings Catered" },
-              { number: "15+", label: "Years Experience" },
-              { number: "100%", label: "Satisfaction Rate" },
+              { number: "1000+", label: t('about.happyClients') },
+              { number: "500+", label: t('about.eventsServed') },
+              { number: "15+", label: t('about.experience') },
+              { number: "100%", label: "Satisfaction" },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -215,18 +217,17 @@ const Testimonials = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground mb-6">
-              Ready to Join Our{" "}
-              <span className="text-gold">Happy Clients?</span>
+              {t('cta.title')}{" "}
+              <span className="text-gold">{t('cta.titleHighlight')}</span>
             </h2>
             <p className="text-secondary-foreground/80 text-lg mb-8">
-              Experience the same exceptional service and delicious food that
-              our clients rave about.
+              {t('cta.subtitle')}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-charcoal rounded-lg font-semibold hover:bg-gold-light transition-all"
             >
-              Book Your Event
+              {t('nav.bookCatering')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>

@@ -1,8 +1,27 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Instagram, Facebook, Twitter, Youtube } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
+
+  const quickLinks = [
+    { name: "Home", href: "/" },
+    { name: t('nav.about'), href: "/about" },
+    { name: t('nav.services'), href: "/services" },
+    { name: t('nav.menu'), href: "/menu" },
+    { name: t('nav.gallery'), href: "/gallery" },
+    { name: t('nav.testimonials'), href: "/testimonials" },
+    { name: t('nav.contact'), href: "/contact" },
+  ];
+
+  const serviceLinks = [
+    t('services.wedding'),
+    t('services.corporate'),
+    t('services.birthday'),
+    t('services.special'),
+  ];
 
   return (
     <footer className="bg-charcoal text-cream safe-area-inset-bottom">
@@ -20,8 +39,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-cream/70 text-sm leading-relaxed mb-6">
-              Premium catering services for weddings, corporate events, and celebrations. 
-              Delicious taste, professional service, and beautiful presentation.
+              {t('footer.description')}
             </p>
             <div className="flex items-center gap-3">
               <a
@@ -60,19 +78,11 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-display font-semibold mb-6 text-gold">
-              Quick Links
+              {t('footer.quickLinks')}
             </h4>
             <ul className="space-y-3">
-              {[
-                { name: "Home", href: "/" },
-                { name: "About Us", href: "/about" },
-                { name: "Our Services", href: "/services" },
-                { name: "Menu", href: "/menu" },
-                { name: "Gallery", href: "/gallery" },
-                { name: "Testimonials", href: "/testimonials" },
-                { name: "Contact", href: "/contact" },
-              ].map((link) => (
-                <li key={link.name}>
+              {quickLinks.map((link) => (
+                <li key={link.href}>
                   <Link
                     to={link.href}
                     className="text-cream/70 hover:text-gold transition-colors text-sm"
@@ -87,17 +97,10 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h4 className="text-lg font-display font-semibold mb-6 text-gold">
-              Our Services
+              {t('footer.ourServices')}
             </h4>
             <ul className="space-y-3">
-              {[
-                "Wedding Catering",
-                "Corporate Events",
-                "Birthday Parties",
-                "Family Functions",
-                "Festival Catering",
-                "Special Occasions",
-              ].map((service) => (
+              {serviceLinks.map((service) => (
                 <li key={service}>
                   <Link
                     to="/services"
@@ -113,7 +116,7 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h4 className="text-lg font-display font-semibold mb-6 text-gold">
-              Contact Us
+              {t('footer.contactInfo')}
             </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -139,7 +142,7 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
                 <span className="text-cream/70 text-sm">
-                  21, New Sahakar Prerna Mandal, Patel Nagar, Golibar Colony, Opp. Raje Sambhaji Vidyalaya, Santacruz (E), Mumbai- 400 055
+                  {t('footer.address')}
                 </span>
               </li>
             </ul>
@@ -151,7 +154,7 @@ const Footer = () => {
       <div className="border-t border-cream/10">
         <div className="container-custom py-6 flex items-center justify-center">
           <p className="text-cream/50 text-sm text-center">
-            © {currentYear} Bittu Caterers. All rights reserved.
+            © {currentYear} Bittu Caterers. {t('footer.rights')}
           </p>
         </div>
       </div>

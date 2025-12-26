@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
@@ -17,86 +18,38 @@ import specialEventCatering from "@/assets/special-event-catering.jpg";
 import indianCuisine from "@/assets/indian-cuisine.jpg";
 import desserts from "@/assets/desserts.jpg";
 
-const galleryImages = [
-  {
-    src: gallery1,
-    alt: "Grand wedding reception buffet hall setup",
-    category: "Wedding",
-  },
-  {
-    src: gallery2,
-    alt: "Indian dessert and sweets display",
-    category: "Desserts",
-  },
-  {
-    src: gallery3,
-    alt: "Live chaat counter at Indian event",
-    category: "Live Counters",
-  },
-  {
-    src: gallery4,
-    alt: "Corporate lunch buffet setup",
-    category: "Corporate",
-  },
-  {
-    src: gallery5,
-    alt: "Tandoor live counter with chef",
-    category: "Live Counters",
-  },
-  {
-    src: gallery6,
-    alt: "Engagement ceremony food setup",
-    category: "Special Events",
-  },
-  {
-    src: weddingCatering,
-    alt: "Elegant wedding catering arrangement",
-    category: "Wedding",
-  },
-  {
-    src: corporateCatering,
-    alt: "Professional corporate event catering",
-    category: "Corporate",
-  },
-  {
-    src: birthdayCatering,
-    alt: "Colorful birthday party catering",
-    category: "Birthday",
-  },
-  {
-    src: specialEventCatering,
-    alt: "Festival celebration food setup",
-    category: "Special Events",
-  },
-  {
-    src: indianCuisine,
-    alt: "Traditional Indian cuisine spread",
-    category: "Food",
-  },
-  {
-    src: desserts,
-    alt: "Premium Indian desserts collection",
-    category: "Desserts",
-  },
-];
-
-const categories = [
-  "All",
-  "Wedding",
-  "Corporate",
-  "Birthday",
-  "Special Events",
-  "Live Counters",
-  "Food",
-  "Desserts",
-];
-
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState("All");
+  const { t } = useLanguage();
+
+  const galleryImages = [
+    { src: gallery1, alt: "Grand wedding reception buffet hall setup", category: t('services.wedding') },
+    { src: gallery2, alt: "Indian dessert and sweets display", category: t('menuPreview.desserts') },
+    { src: gallery3, alt: "Live chaat counter at Indian event", category: t('galleryPage.food') },
+    { src: gallery4, alt: "Corporate lunch buffet setup", category: t('services.corporate') },
+    { src: gallery5, alt: "Tandoor live counter with chef", category: t('galleryPage.food') },
+    { src: gallery6, alt: "Engagement ceremony food setup", category: t('services.special') },
+    { src: weddingCatering, alt: "Elegant wedding catering arrangement", category: t('services.wedding') },
+    { src: corporateCatering, alt: "Professional corporate event catering", category: t('services.corporate') },
+    { src: birthdayCatering, alt: "Colorful birthday party catering", category: t('services.birthday') },
+    { src: specialEventCatering, alt: "Festival celebration food setup", category: t('services.special') },
+    { src: indianCuisine, alt: "Traditional Indian cuisine spread", category: t('galleryPage.food') },
+    { src: desserts, alt: "Premium Indian desserts collection", category: t('menuPreview.desserts') },
+  ];
+
+  const categories = [
+    t('galleryPage.all'),
+    t('services.wedding'),
+    t('services.corporate'),
+    t('services.birthday'),
+    t('services.special'),
+    t('galleryPage.food'),
+    t('menuPreview.desserts'),
+  ];
 
   const filteredImages =
-    activeCategory === "All"
+    activeCategory === t('galleryPage.all')
       ? galleryImages
       : galleryImages.filter((img) => img.category === activeCategory);
 
@@ -121,13 +74,13 @@ const Gallery = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-primary/10 text-primary text-xs sm:text-sm font-medium rounded-full mb-3 sm:mb-4">
-              Our Gallery
+              {t('galleryPage.heroTitle')}
             </span>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-4 sm:mb-6">
-              Moments We've Created
+              {t('galleryPage.heroTitleHighlight')}
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground px-4">
-              Browse through our collection of delicious dishes, beautiful setups, and memorable events.
+              {t('galleryPage.heroSubtitle')}
             </p>
             <div className="decorative-line-center mt-6 sm:mt-8" />
           </motion.div>
@@ -233,17 +186,17 @@ const Gallery = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground mb-6">
-              Want Your Event to Look This{" "}
-              <span className="text-gold">Amazing?</span>
+              {t('cta.title')}{" "}
+              <span className="text-gold">{t('cta.titleHighlight')}</span>
             </h2>
             <p className="text-secondary-foreground/80 text-lg mb-8">
-              Let us create a stunning food experience for your next celebration.
+              {t('cta.subtitle')}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-charcoal rounded-lg font-semibold hover:bg-gold-light transition-all"
             >
-              Book Your Event
+              {t('nav.bookCatering')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>

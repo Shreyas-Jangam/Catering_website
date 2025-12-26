@@ -11,59 +11,47 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import aboutTeam from "@/assets/about-team.jpg";
 import weddingCatering from "@/assets/wedding-catering.jpg";
 
-const values = [
-  {
-    icon: Heart,
-    title: "Quality First",
-    description:
-      "We use only the freshest ingredients and prepare every dish with care and passion.",
-  },
-  {
-    icon: Users,
-    title: "Customer Satisfaction",
-    description:
-      "Your happiness is our priority. We go above and beyond to exceed expectations.",
-  },
-  {
-    icon: Shield,
-    title: "Hygiene & Safety",
-    description:
-      "Strict hygiene protocols ensure safe and clean food preparation at all times.",
-  },
-  {
-    icon: Award,
-    title: "Memorable Experiences",
-    description:
-      "We create lasting memories through exceptional food and presentation.",
-  },
-  {
-    icon: Clock,
-    title: "Reliability",
-    description:
-      "On-time delivery and professional service you can always count on.",
-  },
-  {
-    icon: ChefHat,
-    title: "Culinary Excellence",
-    description:
-      "Expert chefs crafting authentic flavours from traditional to fusion cuisines.",
-  },
-];
-
-const whyChooseUs = [
-  "We cook with care, passion, and expertise",
-  "We maintain the highest hygiene standards",
-  "We provide attractive buffet setups & serving",
-  "We ensure smooth coordination and timely service",
-  "We offer customized menus for every occasion",
-  "We bring years of trusted experience",
-];
-
 const About = () => {
+  const { t } = useLanguage();
+
+  const values = [
+    {
+      icon: Heart,
+      title: t('whyUs.hygienic'),
+      description: t('whyUs.hygienicDesc'),
+    },
+    {
+      icon: Users,
+      title: t('whyUs.professional'),
+      description: t('whyUs.professionalDesc'),
+    },
+    {
+      icon: Shield,
+      title: t('whyUs.onTime'),
+      description: t('whyUs.onTimeDesc'),
+    },
+    {
+      icon: Award,
+      title: t('whyUs.presentation'),
+      description: t('whyUs.presentationDesc'),
+    },
+    {
+      icon: Clock,
+      title: t('whyUs.affordable'),
+      description: t('whyUs.affordableDesc'),
+    },
+    {
+      icon: ChefHat,
+      title: t('whyUs.customMenu'),
+      description: t('whyUs.customMenuDesc'),
+    },
+  ];
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -85,14 +73,13 @@ const About = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              About Us
+              {t('about.heroTitle')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6">
-              Who We Are
+              {t('about.heroTitleHighlight')}
             </h1>
             <p className="text-lg text-muted-foreground">
-              Discover the passion, dedication, and expertise behind Bittu
-              Caterers
+              {t('about.heroSubtitle')}
             </p>
             <div className="decorative-line-center mt-8" />
           </motion.div>
@@ -110,29 +97,19 @@ const About = () => {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-                Our Story
+                {t('about.storyTitle')} {t('about.storyTitleHighlight')}
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-                Bittu Caterers — A Legacy of{" "}
-                <span className="text-primary">Culinary Excellence</span>
+                Bittu Caterers — <span className="text-primary">{t('about.storyTitleHighlight')}</span>
               </h2>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Founded by <strong className="text-foreground">Nitin G. Jangam</strong>, Bittu Caterers is a trusted and premium catering service
-                dedicated to delivering exceptional food experiences. We believe
-                every event deserves great taste, warm hospitality, and a touch
-                of elegance — and that's exactly what we provide.
+                {t('about.storyP1')}
               </p>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                What started as a passion for cooking and serving people has
-                grown into a professional catering brand loved by families,
-                event planners, corporates, and wedding clients. Over time,
-                we've earned trust through quality, consistency, and commitment.
+                {t('about.storyP2')}
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Today, we proudly serve thousands of guests at weddings,
-                corporate events, birthday parties, and special celebrations —
-                always delivering the same exceptional quality and service that
-                made us who we are.
+                {t('about.storyP3')}
               </p>
             </motion.div>
 
@@ -150,7 +127,7 @@ const About = () => {
               />
               <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-2xl shadow-gold">
                 <div className="text-4xl font-display font-bold">15+</div>
-                <div className="text-sm opacity-90">Years of Excellence</div>
+                <div className="text-sm opacity-90">{t('about.experience')}</div>
               </div>
             </motion.div>
           </div>
@@ -161,9 +138,9 @@ const About = () => {
       <section className="section-padding bg-cream-dark">
         <div className="container-custom">
           <SectionHeading
-            badge="Our Values"
-            title="What We Stand For"
-            subtitle="Our core values guide everything we do, from the kitchen to your table."
+            badge={t('about.whyChooseTitle')}
+            title={t('about.whyChooseTitleHighlight')}
+            subtitle={t('about.missionText')}
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -217,34 +194,19 @@ const About = () => {
               transition={{ duration: 0.6 }}
             >
               <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-                Why Bittu Caterers?
+                {t('about.missionTitle')}
               </span>
               <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
-                Let Us Handle the Food —{" "}
-                <span className="text-primary">You Enjoy the Celebration</span>
+                {t('about.missionTitleHighlight')}
               </h2>
-              <ul className="space-y-4 mb-8">
-                {whyChooseUs.map((item, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-center gap-3"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                  >
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <div className="w-2 h-2 rounded-full bg-primary" />
-                    </div>
-                    <span className="text-foreground">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                {t('about.missionText')}
+              </p>
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-gold"
               >
-                Book Your Event
+                {t('nav.bookCatering')}
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </motion.div>
@@ -262,18 +224,17 @@ const About = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground mb-6">
-              Ready to Experience the{" "}
-              <span className="text-gold">Bittu Difference?</span>
+              {t('cta.title')}{" "}
+              <span className="text-gold">{t('cta.titleHighlight')}</span>
             </h2>
             <p className="text-secondary-foreground/80 text-lg mb-8">
-              Contact us today to discuss your event and let us create a
-              memorable culinary experience for you.
+              {t('cta.subtitle')}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-charcoal rounded-lg font-semibold hover:bg-gold-light transition-all"
             >
-              Get in Touch
+              {t('nav.contact')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>

@@ -11,81 +11,51 @@ import {
   Check,
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import SectionHeading from "@/components/SectionHeading";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import weddingCatering from "@/assets/wedding-catering.jpg";
 import corporateCatering from "@/assets/corporate-catering.jpg";
 import birthdayCatering from "@/assets/birthday-catering.jpg";
 import specialEventCatering from "@/assets/special-event-catering.jpg";
 
-const services = [
-  {
-    id: "wedding",
-    title: "Wedding Catering",
-    description:
-      "Make your special day even more beautiful with grand and flavourful wedding catering. From welcome drinks to desserts, we design menus that your guests will remember forever.",
-    image: weddingCatering,
-    icon: Heart,
-    features: [
-      "Multiple cuisine options",
-      "Live counters (optional)",
-      "Elegant buffet setup",
-      "Professional serving staff",
-      "Custom menu design",
-      "Decoration coordination",
-    ],
-  },
-  {
-    id: "corporate",
-    title: "Corporate Catering",
-    description:
-      "Perfect for office parties, meetings, conferences, celebrations, or large corporate events. We deliver professional, reliable, and impressive catering that reflects your brand.",
-    image: corporateCatering,
-    icon: Users,
-    features: [
-      "Premium food menu",
-      "Hassle-free service",
-      "Neat presentation",
-      "Timely delivery & setup",
-      "Volume discounts",
-      "Dietary accommodations",
-    ],
-  },
-  {
-    id: "birthday",
-    title: "Birthday & Party Catering",
-    description:
-      "Fun, flavourful, and crowd-pleasing food for birthdays, house parties, and celebrations. From kids' parties to grand celebrations — we add joy, taste, and excitement to every moment.",
-    image: birthdayCatering,
-    icon: PartyPopper,
-    features: [
-      "Kids & adults friendly menu",
-      "Snack & starter options",
-      "Custom theme setups (optional)",
-      "Cake cutting arrangements",
-      "Party favors coordination",
-      "Entertainment-friendly timing",
-    ],
-  },
-  {
-    id: "special",
-    title: "Special Events Catering",
-    description:
-      "Whatever the occasion, we ensure perfect taste and perfect service. House parties, engagements, anniversaries, housewarming, religious events, festivals, and social gatherings.",
-    image: specialEventCatering,
-    icon: Calendar,
-    features: [
-      "Engagement ceremonies",
-      "Anniversary celebrations",
-      "Housewarming parties",
-      "Religious & puja events",
-      "Festival celebrations",
-      "Social gatherings",
-    ],
-  },
-];
-
 const Services = () => {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      id: "wedding",
+      title: t('servicesPage.weddingTitle'),
+      description: t('servicesPage.weddingDesc'),
+      image: weddingCatering,
+      icon: Heart,
+      features: t('servicesPage.weddingFeatures').split(','),
+    },
+    {
+      id: "corporate",
+      title: t('servicesPage.corporateTitle'),
+      description: t('servicesPage.corporateDesc'),
+      image: corporateCatering,
+      icon: Users,
+      features: t('servicesPage.corporateFeatures').split(','),
+    },
+    {
+      id: "birthday",
+      title: t('servicesPage.birthdayTitle'),
+      description: t('servicesPage.birthdayDesc'),
+      image: birthdayCatering,
+      icon: PartyPopper,
+      features: t('servicesPage.birthdayFeatures').split(','),
+    },
+    {
+      id: "special",
+      title: t('servicesPage.specialTitle'),
+      description: t('servicesPage.specialDesc'),
+      image: specialEventCatering,
+      icon: Calendar,
+      features: t('servicesPage.specialFeatures').split(','),
+    },
+  ];
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -107,13 +77,13 @@ const Services = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              Our Services
+              {t('servicesPage.heroTitle')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6">
-              Premium Catering for Every Occasion
+              {t('servicesPage.heroTitleHighlight')}
             </h1>
             <p className="text-lg text-muted-foreground">
-              From intimate gatherings to grand celebrations, we bring exceptional taste and service to every event.
+              {t('servicesPage.heroSubtitle')}
             </p>
             <div className="decorative-line-center mt-8" />
           </motion.div>
@@ -159,7 +129,7 @@ const Services = () => {
                   <div className="mb-8">
                     <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
                       <Sparkles className="w-5 h-5 text-primary" />
-                      What We Provide
+                      {t('servicesPage.keyFeatures')}
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {service.features.map((feature, i) => (
@@ -179,14 +149,14 @@ const Services = () => {
                       to="/contact"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-gold"
                     >
-                      Book Now
+                      {t('servicesPage.getQuote')}
                       <ArrowRight className="w-5 h-5" />
                     </Link>
                     <Link
                       to="/menu"
                       className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all"
                     >
-                      View Menu
+                      {t('nav.viewMenu')}
                     </Link>
                   </div>
                 </div>
@@ -206,17 +176,17 @@ const Services = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground mb-6">
-              Can't Find What You're Looking For?
+              {t('cta.title')}{" "}
+              <span className="text-gold">{t('cta.titleHighlight')}</span>
             </h2>
             <p className="text-secondary-foreground/80 text-lg mb-8">
-              We offer customized catering solutions for any event. Contact us
-              to discuss your specific requirements.
+              {t('cta.subtitle')}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-charcoal rounded-lg font-semibold hover:bg-gold-light transition-all"
             >
-              Get Custom Quote
+              {t('cta.getQuote')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>

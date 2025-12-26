@@ -10,13 +10,13 @@ import {
   Users,
   Heart,
   ArrowRight,
-  Star,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import MenuCard from "@/components/MenuCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import heroCatering from "@/assets/hero-catering.jpg";
 import weddingCatering from "@/assets/wedding-catering.jpg";
@@ -28,113 +28,111 @@ import punjabiCuisine from "@/assets/punjabi-cuisine.jpg";
 import chineseCuisine from "@/assets/chinese-cuisine.jpg";
 import desserts from "@/assets/desserts.jpg";
 
-const usps = [
-  {
-    icon: Shield,
-    title: "100% Hygienic",
-    description: "Freshly prepared with highest hygiene standards",
-  },
-  {
-    icon: Users,
-    title: "Professional Team",
-    description: "Trained and experienced catering staff",
-  },
-  {
-    icon: Clock,
-    title: "On-Time Service",
-    description: "Perfect execution and punctual delivery",
-  },
-  {
-    icon: Sparkles,
-    title: "Beautiful Presentation",
-    description: "Elegant buffet setup and food styling",
-  },
-  {
-    icon: Heart,
-    title: "Premium Packages",
-    description: "Affordable luxury for every budget",
-  },
-];
-
-const services = [
-  {
-    title: "Wedding Catering",
-    description:
-      "Make your wedding feast grand, memorable, and full of flavours your guests will love.",
-    image: weddingCatering,
-  },
-  {
-    title: "Corporate Catering",
-    description:
-      "Professional, reliable, and impressive catering for meetings, events, and celebrations.",
-    image: corporateCatering,
-  },
-  {
-    title: "Birthday & Party",
-    description:
-      "From kids' parties to grand celebrations — we add joy, taste, and excitement.",
-    image: birthdayCatering,
-  },
-  {
-    title: "Special Events",
-    description:
-      "House parties, engagements, anniversaries, religious events, and festivals.",
-    image: specialEventCatering,
-  },
-];
-
-const menuPreview = [
-  {
-    title: "Indian Cuisine",
-    description: "Rich flavours and authentic recipes",
-    image: indianCuisine,
-    items: ["Biryani", "Paneer", "Dal", "Naan"],
-  },
-  {
-    title: "Punjabi Favourites",
-    description: "Creamy curries and tandoori delights",
-    image: punjabiCuisine,
-    items: ["Butter Chicken", "Dal Makhani", "Tandoori"],
-  },
-  {
-    title: "Chinese Cuisine",
-    description: "Indo-Chinese fusion favourites",
-    image: chineseCuisine,
-    items: ["Noodles", "Manchurian", "Fried Rice"],
-  },
-  {
-    title: "Desserts & Sweets",
-    description: "Sweet endings to perfect meals",
-    image: desserts,
-    items: ["Gulab Jamun", "Jalebi", "Kheer", "Ice Cream"],
-  },
-];
-
-const testimonials = [
-  {
-    name: "Priya Sharma",
-    role: "Wedding Client",
-    content:
-      "Bittu Caterers made our wedding absolutely unforgettable. The food was amazing, presentation was beautiful, and the service was impeccable. Every guest complimented the feast!",
-    rating: 5,
-  },
-  {
-    name: "Rajesh Mehta",
-    role: "Corporate Event Manager",
-    content:
-      "Our corporate event catering was outstanding. Professional team, great food quality, and everything was delivered on time. Highly recommend for business events.",
-    rating: 5,
-  },
-  {
-    name: "Sunita Patel",
-    role: "Birthday Party Host",
-    content:
-      "The birthday party catering exceeded all expectations. Kids and adults both loved the food. The team was friendly and handled everything smoothly.",
-    rating: 5,
-  },
-];
-
 const Index = () => {
+  const { t } = useLanguage();
+
+  const usps = [
+    {
+      icon: Shield,
+      title: t('whyUs.hygienic'),
+      description: t('whyUs.hygienicDesc'),
+    },
+    {
+      icon: Users,
+      title: t('whyUs.professional'),
+      description: t('whyUs.professionalDesc'),
+    },
+    {
+      icon: Clock,
+      title: t('whyUs.onTime'),
+      description: t('whyUs.onTimeDesc'),
+    },
+    {
+      icon: Sparkles,
+      title: t('whyUs.presentation'),
+      description: t('whyUs.presentationDesc'),
+    },
+    {
+      icon: Heart,
+      title: t('whyUs.affordable'),
+      description: t('whyUs.affordableDesc'),
+    },
+  ];
+
+  const services = [
+    {
+      title: t('services.wedding'),
+      description: t('services.weddingDesc'),
+      image: weddingCatering,
+    },
+    {
+      title: t('services.corporate'),
+      description: t('services.corporateDesc'),
+      image: corporateCatering,
+    },
+    {
+      title: t('services.birthday'),
+      description: t('services.birthdayDesc'),
+      image: birthdayCatering,
+    },
+    {
+      title: t('services.special'),
+      description: t('services.specialDesc'),
+      image: specialEventCatering,
+    },
+  ];
+
+  const menuPreview = [
+    {
+      title: t('menuPreview.punjabi'),
+      description: t('menuPreview.punjabiDesc'),
+      image: punjabiCuisine,
+      items: ["Biryani", "Paneer", "Dal", "Naan"],
+    },
+    {
+      title: t('menuPreview.southIndian'),
+      description: t('menuPreview.southIndianDesc'),
+      image: indianCuisine,
+      items: ["Dosa", "Idli", "Vada", "Sambar"],
+    },
+    {
+      title: t('menuPreview.chinese'),
+      description: t('menuPreview.chineseDesc'),
+      image: chineseCuisine,
+      items: ["Noodles", "Manchurian", "Fried Rice"],
+    },
+    {
+      title: t('menuPreview.desserts'),
+      description: t('menuPreview.dessertsDesc'),
+      image: desserts,
+      items: ["Gulab Jamun", "Jalebi", "Kheer", "Ice Cream"],
+    },
+  ];
+
+  const testimonials = [
+    {
+      name: "Priya Sharma",
+      role: "Wedding Client",
+      content:
+        "Bittu Caterers made our wedding absolutely unforgettable. The food was amazing, presentation was beautiful, and the service was impeccable. Every guest complimented the feast!",
+      rating: 5,
+    },
+    {
+      name: "Rajesh Mehta",
+      role: "Corporate Event Manager",
+      content:
+        "Our corporate event catering was outstanding. Professional team, great food quality, and everything was delivered on time. Highly recommend for business events.",
+      rating: 5,
+    },
+    {
+      name: "Sunita Patel",
+      role: "Birthday Party Host",
+      content:
+        "The birthday party catering exceeded all expectations. Kids and adults both loved the food. The team was friendly and handled everything smoothly.",
+      rating: 5,
+    },
+  ];
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -151,7 +149,7 @@ const Index = () => {
         </div>
 
         {/* Content */}
-        <div className="container-custom relative z-10 pt-20 sm:pt-24 pb-16">
+        <div className="container-custom relative z-10 pt-28 sm:pt-32 pb-16">
           <div className="max-w-3xl">
             <motion.span
               className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-primary/20 text-gold text-xs sm:text-sm font-medium rounded-full mb-4 sm:mb-6"
@@ -168,10 +166,18 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Bittu Caterers{" "}
-              <span className="text-gold">Premium Catering</span> for Weddings,
-              Events & Celebrations
+              {t('hero.title')}{" "}
+              <span className="text-gold">{t('hero.subtitle')}</span>
             </motion.h1>
+
+            <motion.p
+              className="text-sm sm:text-base text-gold/90 font-medium mb-2"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              By <span className="font-semibold">Nitin G. Jangam</span>
+            </motion.p>
 
             <motion.p
               className="text-base sm:text-lg md:text-xl text-cream/80 mb-6 sm:mb-8 max-w-2xl"
@@ -179,9 +185,7 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Delicious taste, hygienic cooking, elegant presentation, and
-              professional service — we make your celebrations truly
-              unforgettable.
+              {t('hero.description')}
             </motion.p>
 
             <motion.div
@@ -195,13 +199,13 @@ const Index = () => {
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-primary text-primary-foreground rounded-lg font-semibold text-sm sm:text-base hover:bg-primary/90 transition-all shadow-gold touch-target"
               >
                 <ChefHat className="w-5 h-5" />
-                Book Catering
+                {t('hero.bookCatering')}
               </Link>
               <Link
                 to="/menu"
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-cream/10 text-cream border border-cream/30 rounded-lg font-semibold text-sm sm:text-base hover:bg-cream/20 transition-all touch-target"
               >
-                View Menu
+                {t('hero.viewMenu')}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <a
@@ -211,7 +215,7 @@ const Index = () => {
                 className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#25D366] text-white rounded-lg font-semibold text-sm sm:text-base hover:bg-[#20BD5C] transition-all touch-target"
               >
                 <MessageCircle className="w-5 h-5" />
-                WhatsApp Now
+                {t('nav.whatsappNow')}
               </a>
             </motion.div>
           </div>
@@ -238,9 +242,9 @@ const Index = () => {
       <section className="section-padding bg-cream-dark">
         <div className="container-custom">
           <SectionHeading
-            badge="Why Choose Us"
-            title="We Serve Happiness"
-            subtitle="With years of experience and a passion for culinary excellence, we deliver mouth-watering taste, stunning food presentation, and flawless service."
+            badge={t('whyUs.title')}
+            title={t('whyUs.titleHighlight')}
+            subtitle={t('whyUs.subtitle')}
           />
 
           <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
@@ -272,9 +276,9 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-custom">
           <SectionHeading
-            badge="Our Services"
-            title="Catering for Every Occasion"
-            subtitle="From intimate gatherings to grand celebrations, we bring exceptional taste and service to every event."
+            badge={t('services.title')}
+            title={t('services.titleHighlight')}
+            subtitle={t('services.subtitle')}
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -297,7 +301,7 @@ const Index = () => {
               to="/services"
               className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-all touch-target text-sm sm:text-base"
             >
-              Explore All Services
+              {t('services.learnMore')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
@@ -308,9 +312,9 @@ const Index = () => {
       <section className="section-padding bg-cream-dark">
         <div className="container-custom">
           <SectionHeading
-            badge="Our Signature Taste"
-            title="Explore Our Menu"
-            subtitle="We specialize in rich flavours, authentic recipes, premium ingredients, and superb presentation."
+            badge={t('menuPreview.title')}
+            title={t('menuPreview.titleHighlight')}
+            subtitle={t('menuPreview.subtitle')}
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -329,7 +333,7 @@ const Index = () => {
               to="/menu"
               className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-gold touch-target text-sm sm:text-base"
             >
-              View Full Menu
+              {t('menuPreview.viewFullMenu')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
@@ -340,9 +344,9 @@ const Index = () => {
       <section className="section-padding">
         <div className="container-custom">
           <SectionHeading
-            badge="Testimonials"
-            title="What Our Clients Say"
-            subtitle="Don't just take our word for it — hear from our happy clients."
+            badge={t('testimonials.title')}
+            title={t('testimonials.titleHighlight')}
+            subtitle={t('testimonials.subtitle')}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
@@ -365,7 +369,7 @@ const Index = () => {
               to="/testimonials"
               className="inline-flex items-center gap-2 text-primary font-semibold hover:underline text-sm sm:text-base"
             >
-              Read More Reviews
+              {t('testimonials.viewAll')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
@@ -382,12 +386,11 @@ const Index = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-secondary-foreground mb-4 sm:mb-6">
-              Ready to Make Your Event{" "}
-              <span className="text-gold">Deliciously Memorable?</span>
+              {t('cta.title')}{" "}
+              <span className="text-gold">{t('cta.titleHighlight')}</span>
             </h2>
             <p className="text-secondary-foreground/80 text-base sm:text-lg mb-6 sm:mb-8">
-              Let us handle the food — you enjoy the celebration. Contact us
-              today for a customized quote.
+              {t('cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <a
@@ -395,13 +398,13 @@ const Index = () => {
                 className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-gold text-charcoal rounded-lg font-semibold hover:bg-gold-light transition-all touch-target w-full sm:w-auto justify-center text-sm sm:text-base"
               >
                 <Phone className="w-5 h-5" />
-                Call Now
+                {t('cta.callNow')}
               </a>
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-secondary-foreground/10 text-secondary-foreground border border-secondary-foreground/30 rounded-lg font-semibold hover:bg-secondary-foreground/20 transition-all touch-target w-full sm:w-auto justify-center text-sm sm:text-base"
               >
-                Get a Quote
+                {t('cta.getQuote')}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <a
@@ -411,7 +414,7 @@ const Index = () => {
                 className="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#25D366] text-white rounded-lg font-semibold hover:bg-[#20BD5C] transition-all touch-target w-full sm:w-auto justify-center text-sm sm:text-base"
               >
                 <MessageCircle className="w-5 h-5" />
-                WhatsApp Us
+                {t('nav.whatsappNow')}
               </a>
             </div>
           </motion.div>

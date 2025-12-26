@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import MenuCard from "@/components/MenuCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import indianCuisine from "@/assets/indian-cuisine.jpg";
 import punjabiCuisine from "@/assets/punjabi-cuisine.jpg";
@@ -12,106 +13,102 @@ import southIndianCuisine from "@/assets/south-indian-cuisine.jpg";
 import snacksStarters from "@/assets/snacks-starters.jpg";
 import desserts from "@/assets/desserts.jpg";
 
-const menuCategories = [
-  {
-    title: "Indian Cuisine",
-    description:
-      "Rich flavours and authentic recipes from across India. Traditional preparations with premium ingredients.",
-    image: indianCuisine,
-    items: [
-      "Paneer Dishes",
-      "Veg Curries",
-      "Dal Varieties",
-      "Biryani",
-      "Pulav",
-      "Roti & Naan",
-      "Poori",
-      "Rice Varieties",
-    ],
-  },
-  {
-    title: "Punjabi Favourites",
-    description:
-      "Rich gravies, creamy curries, tandoori items, and classic Punjabi flavours that everyone loves.",
-    image: punjabiCuisine,
-    items: [
-      "Butter Chicken Style Paneer",
-      "Dal Makhani",
-      "Sarson da Saag",
-      "Makki ki Roti",
-      "Tandoori Items",
-      "Chole Bhature",
-      "Rajma Chawal",
-      "Lassi",
-    ],
-  },
-  {
-    title: "Chinese Cuisine",
-    description:
-      "Indo-Chinese fusion favourites that are always a hit at any event or celebration.",
-    image: chineseCuisine,
-    items: [
-      "Hakka Noodles",
-      "Fried Rice",
-      "Manchurian",
-      "Soups",
-      "Spring Rolls",
-      "Chili Paneer",
-      "Sweet Corn Soup",
-      "Momos",
-    ],
-  },
-  {
-    title: "South Indian",
-    description:
-      "Authentic South Indian delicacies prepared with traditional recipes and fresh ingredients.",
-    image: southIndianCuisine,
-    items: [
-      "Masala Dosa",
-      "Plain Dosa",
-      "Idli",
-      "Medu Vada",
-      "Uttapam",
-      "Sambhar",
-      "Coconut Chutney",
-      "Filter Coffee",
-    ],
-  },
-  {
-    title: "Snacks & Starters",
-    description:
-      "Delicious appetizers and snacks to kick off your event with flavour and excitement.",
-    image: snacksStarters,
-    items: [
-      "Samosa",
-      "Pakora",
-      "Paneer Tikka",
-      "Chaat Varieties",
-      "Pav Bhaji",
-      "Bhel Puri",
-      "Aloo Tikki",
-      "Papdi Chaat",
-    ],
-  },
-  {
-    title: "Desserts & Sweets",
-    description:
-      "Sweet endings to perfect meals. Traditional Indian sweets and modern desserts.",
-    image: desserts,
-    items: [
-      "Gulab Jamun",
-      "Jalebi",
-      "Rasgulla",
-      "Kheer",
-      "Halwa",
-      "Ladoo",
-      "Ice Cream",
-      "Custard",
-    ],
-  },
-];
-
 const Menu = () => {
+  const { t } = useLanguage();
+
+  const menuCategories = [
+    {
+      title: t('menuPreview.punjabi'),
+      description: t('menuPreview.punjabiDesc'),
+      image: punjabiCuisine,
+      items: [
+        "Paneer Dishes",
+        "Veg Curries",
+        "Dal Varieties",
+        "Biryani",
+        "Pulav",
+        "Roti & Naan",
+        "Poori",
+        "Rice Varieties",
+      ],
+    },
+    {
+      title: t('menuPreview.southIndian'),
+      description: t('menuPreview.southIndianDesc'),
+      image: southIndianCuisine,
+      items: [
+        "Masala Dosa",
+        "Plain Dosa",
+        "Idli",
+        "Medu Vada",
+        "Uttapam",
+        "Sambhar",
+        "Coconut Chutney",
+        "Filter Coffee",
+      ],
+    },
+    {
+      title: t('menuPreview.chinese'),
+      description: t('menuPreview.chineseDesc'),
+      image: chineseCuisine,
+      items: [
+        "Hakka Noodles",
+        "Fried Rice",
+        "Manchurian",
+        "Soups",
+        "Spring Rolls",
+        "Chili Paneer",
+        "Sweet Corn Soup",
+        "Momos",
+      ],
+    },
+    {
+      title: t('menuPreview.desserts'),
+      description: t('menuPreview.dessertsDesc'),
+      image: desserts,
+      items: [
+        "Gulab Jamun",
+        "Jalebi",
+        "Rasgulla",
+        "Kheer",
+        "Halwa",
+        "Ladoo",
+        "Ice Cream",
+        "Custard",
+      ],
+    },
+    {
+      title: "Snacks & Starters",
+      description: "Delicious appetizers and snacks to kick off your event.",
+      image: snacksStarters,
+      items: [
+        "Samosa",
+        "Pakora",
+        "Paneer Tikka",
+        "Chaat Varieties",
+        "Pav Bhaji",
+        "Bhel Puri",
+        "Aloo Tikki",
+        "Papdi Chaat",
+      ],
+    },
+    {
+      title: "Indian Cuisine",
+      description: "Rich flavours and authentic recipes from across India.",
+      image: indianCuisine,
+      items: [
+        "Butter Chicken Style Paneer",
+        "Dal Makhani",
+        "Sarson da Saag",
+        "Makki ki Roti",
+        "Tandoori Items",
+        "Chole Bhature",
+        "Rajma Chawal",
+        "Lassi",
+      ],
+    },
+  ];
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -133,13 +130,13 @@ const Menu = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              Our Menu
+              {t('menuPage.heroTitle')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6">
-              Delicious Dishes for Every Taste
+              {t('menuPage.heroTitleHighlight')}
             </h1>
             <p className="text-lg text-muted-foreground">
-              We offer a wide range of delicious dishes prepared with fresh ingredients and authentic flavours.
+              {t('menuPage.heroSubtitle')}
             </p>
             <div className="decorative-line-center mt-8" />
           </motion.div>
@@ -172,10 +169,10 @@ const Menu = () => {
               </div>
               <div>
                 <h3 className="text-xl font-display font-semibold text-foreground">
-                  Custom Menus Available
+                  {t('menuPage.customMenu')}
                 </h3>
                 <p className="text-muted-foreground">
-                  We create personalized menus based on your event and preferences.
+                  {t('menuPage.customMenuDesc')}
                 </p>
               </div>
             </div>
@@ -183,7 +180,7 @@ const Menu = () => {
               to="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-all shadow-gold whitespace-nowrap"
             >
-              Request Custom Menu
+              {t('menuPage.requestCustom')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
@@ -194,9 +191,9 @@ const Menu = () => {
       <section className="section-padding bg-cream-dark">
         <div className="container-custom">
           <SectionHeading
-            badge="Beverages"
-            title="Refreshing Drinks"
-            subtitle="Complete your meal with our selection of refreshing beverages."
+            badge={t('menuPage.beverages')}
+            title={t('menuPage.beverages')}
+            subtitle={t('menuPage.heroSubtitle')}
           />
 
           <motion.div
@@ -244,18 +241,17 @@ const Menu = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary-foreground mb-6">
-              Ready to Create Your{" "}
-              <span className="text-gold">Perfect Menu?</span>
+              {t('cta.title')}{" "}
+              <span className="text-gold">{t('cta.titleHighlight')}</span>
             </h2>
             <p className="text-secondary-foreground/80 text-lg mb-8">
-              Contact us to discuss your event requirements and we'll design a
-              menu that your guests will love.
+              {t('cta.subtitle')}
             </p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-charcoal rounded-lg font-semibold hover:bg-gold-light transition-all"
             >
-              Get a Quote
+              {t('cta.getQuote')}
               <ArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
