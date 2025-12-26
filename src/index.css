@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium Gold & Cream Theme */
+    --background: 40 30% 97%;
+    --foreground: 30 20% 15%;
+
+    --card: 40 25% 95%;
+    --card-foreground: 30 20% 15%;
+
+    --popover: 40 30% 97%;
+    --popover-foreground: 30 20% 15%;
+
+    /* Rich Gold Primary */
+    --primary: 38 70% 50%;
+    --primary-foreground: 40 30% 97%;
+
+    /* Warm Burgundy Secondary */
+    --secondary: 350 60% 30%;
+    --secondary-foreground: 40 30% 97%;
+
+    /* Muted Cream */
+    --muted: 40 20% 90%;
+    --muted-foreground: 30 15% 40%;
+
+    /* Gold Accent */
+    --accent: 38 80% 55%;
+    --accent-foreground: 30 20% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 38 30% 85%;
+    --input: 38 30% 85%;
+    --ring: 38 70% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom Colors */
+    --gold: 38 70% 50%;
+    --gold-light: 40 65% 65%;
+    --gold-dark: 38 75% 40%;
+    --burgundy: 350 60% 30%;
+    --burgundy-light: 350 50% 45%;
+    --cream: 40 30% 97%;
+    --cream-dark: 40 25% 90%;
+    --charcoal: 30 20% 15%;
+    --warm-white: 40 40% 99%;
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(38 70% 50%), hsl(40 65% 60%));
+    --gradient-burgundy: linear-gradient(135deg, hsl(350 60% 30%), hsl(350 50% 40%));
+    --gradient-hero: linear-gradient(180deg, hsla(30, 20%, 10%, 0.7) 0%, hsla(30, 20%, 10%, 0.5) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(40 25% 98%) 0%, hsl(40 25% 95%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsla(30, 20%, 15%, 0.08);
+    --shadow-medium: 0 8px 30px hsla(30, 20%, 15%, 0.12);
+    --shadow-gold: 0 8px 30px hsla(38, 70%, 50%, 0.25);
+    --shadow-card: 0 10px 40px hsla(30, 20%, 15%, 0.1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 20% 8%;
+    --foreground: 40 30% 95%;
+
+    --card: 30 18% 12%;
+    --card-foreground: 40 30% 95%;
+
+    --popover: 30 20% 10%;
+    --popover-foreground: 40 30% 95%;
+
+    --primary: 38 70% 55%;
+    --primary-foreground: 30 20% 10%;
+
+    --secondary: 350 50% 40%;
+    --secondary-foreground: 40 30% 95%;
+
+    --muted: 30 15% 18%;
+    --muted-foreground: 40 20% 65%;
+
+    --accent: 38 75% 50%;
+    --accent-foreground: 30 20% 10%;
+
+    --destructive: 0 62.8% 45%;
+    --destructive-foreground: 40 30% 95%;
+
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 38 70% 55%;
+
+    --gold: 38 70% 55%;
+    --gold-light: 40 65% 65%;
+    --gold-dark: 38 75% 45%;
+    --burgundy: 350 50% 40%;
+    --burgundy-light: 350 45% 50%;
+    --cream: 40 20% 15%;
+    --cream-dark: 40 15% 12%;
+    --charcoal: 40 30% 90%;
+    --warm-white: 30 20% 10%;
+
+    --gradient-gold: linear-gradient(135deg, hsl(38 70% 55%), hsl(40 65% 65%));
+    --gradient-burgundy: linear-gradient(135deg, hsl(350 50% 40%), hsl(350 45% 50%));
+    --gradient-hero: linear-gradient(180deg, hsla(30, 20%, 5%, 0.85) 0%, hsla(30, 20%, 5%, 0.6) 100%);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Fluid typography */
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  img {
+    @apply max-w-full h-auto;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
+
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .gradient-burgundy {
+    background: var(--gradient-burgundy);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-gold);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  @media (hover: hover) {
+    .hover-lift:hover {
+      @apply -translate-y-1;
+      box-shadow: var(--shadow-medium);
+    }
+  }
+
+  .decorative-line {
+    @apply w-16 sm:w-20 h-1 bg-primary rounded-full;
+  }
+
+  .decorative-line-center {
+    @apply w-16 sm:w-20 h-1 bg-primary rounded-full mx-auto;
+  }
+
+  /* Touch-friendly elements */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Safe area support */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .safe-area-inset-top {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+
+  /* Prevent horizontal overflow */
+  .overflow-safe {
+    @apply overflow-x-hidden max-w-full;
+  }
+
+  /* Responsive text utilities */
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  /* Responsive gap utilities */
+  .gap-responsive {
+    @apply gap-4 sm:gap-6 md:gap-8;
+  }
+
+  /* Card responsive */
+  .card-responsive {
+    @apply p-4 sm:p-6 md:p-8;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-down {
+    animation: fadeInDown 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
